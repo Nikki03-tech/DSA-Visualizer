@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Binary Search Visualizer</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background: linear-gradient(135deg, #e0f7fa, #e3f2fd, #fce4ec);
+        
+        margin: 0;
+        padding: 20px;
+        color: #333;
+      }
+
+      h2 {
+        text-align: center;
+        margin-bottom: 20px;
+        font-size: 28px;
+        font-weight: bold;
+      }
+
+      /* Controls */
+      #controls {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 12px;
+        flex-wrap: wrap;
+        margin-bottom: 20px;
+      }
+
+      input,
+      button,
+      label {
+        font-size: 14px;
+      }
+
+      input {
+        padding: 6px 8px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+
+      button {
+        padding: 8px 14px;
+        cursor: pointer;
+        background: linear-gradient(135deg, #0077b6, #00b4d8);
+        border: none;
+        color: white;
+        border-radius: 6px;
+        font-weight: bold;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+        transition: transform 0.2s, box-shadow 0.3s;
+      }
+      button:hover {
+        transform: scale(1.05);
+        box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.25);
+      }
+
+      /* Dashboard Grid Layout */
+      .dashboard {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        grid-template-rows: auto auto;
+        gap: 15px;
+        max-width: 1100px;
+        margin: auto;
+      }
+
+      /* Layout fix */
+      .grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto;
+        gap: 0; /* remove unwanted space */
+      }
+
+      /* Visualization area */
+      #visualization {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 120px;
+        background: #fff;
+        border: 1px solid #ccc;
+        border-bottom: none; /* merge with execution box */
+        border-radius: 8px 8px 0 0; /* only top rounded */
+        padding: 12px;
+        gap: 10px;
+      }
+
+      /* Execution panel */
+      #execution {
+        background: #f9f9f9;
+        border: 1px solid #ccc;
+        border-top: none; /* merge with visualization */
+        border-radius: 0 0 8px 8px; /* only bottom rounded */
+        padding: 12px;
+      }
+
+      .box {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 55px;
+        height: 55px;
+        border: 2px solid #0077b6;
+        border-radius: 10px;
+        font-weight: bold;
+        font-size: 16px;
+        background: #e3f2fd;
+        transition: all 0.3s ease;
+      }
+      .box.low {
+        background: #bbdefb;
+        border-color: #1565c0;
+      }
+      .box.mid {
+        background: #ffe082;
+        border-color: #fbc02d;
+      }
+      .box.high {
+        background: #ffcdd2;
+        border-color: #c62828;
+      }
+      .box.found {
+        background: #66bb6a;
+        color: white;
+        border-color: #2e7d32;
+      }
+
+      /* Panels */
+      .panel {
+        background: #ffffffcc;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        padding: 12px;
+        font-size: 14px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(4px);
+      }
+
+      #logicPanel {
+        height: 300px;
+      }
+      #stepPanel {
+        height: 200px;
+      }
+      #summaryPanel {
+        height: 200px;
+      }
+
+      pre {
+        margin: 0;
+        font-size: 13px;
+        color: #444;
+      }
+
+      /* Back button */
+      .back-button {
+        display: inline-block;
+        margin: 10px;
+        padding: 10px 20px;
+        background: linear-gradient(135deg, #6a11cb, #2575fc);
+        color: white;
+        border-radius: 8px;
+        cursor: pointer;
+        text-decoration: none;
+        font-weight: bold;
+        transition: transform 0.3s, background 0.3s;
+      }
+      .back-button:hover {
+        transform: scale(1.05);
+        background: linear-gradient(135deg, #2575fc, #6a11cb);
+      }
+    </style>
+  </head>
+  <body>
+    <a href="../index.html" class="back-button">⬅ Back to Searching Menu</a>
+
+    <h2>📍 Binary Search Visualizer</h2>
+
+    <!-- Controls -->
+    <div id="controls">
+      <input type="text" id="userInput" value="5,3,8,4,2" size="30" />
+      <input
+        type="text"
+        id="targetInput"
+        value="4"
+        size="10"
+        placeholder="Target"
+      />
+      <button onclick="startBinarySearch()">Start</button>
+      <button onclick="resetVisualizer()">Reset</button>
+      <label>
+        Speed:
+        <input
+          type="range"
+          id="speedSlider"
+          min="200"
+          max="2000"
+          step="100"
+          value="800"
+        />
+      </label>
+    </div>
+
+    <!-- Dashboard -->
+    <div class="dashboard">
+      <div id="visualization"></div>
+      <div id="logicPanel" class="panel">
+        <b>Binary Search Logic:</b>
+        <pre>
+low = 0, high = n-1
+while low <= high:
+    mid = (low + high) // 2
+    if arr[mid] == target:
+        return mid
+    else if arr[mid] < target:
+        low = mid + 1
+    else:
+        high = mid - 1
+return -1
+      </pre
+        >
+      </div>
+      <div id="stepPanel" class="panel">
+        <b>Step-by-step Execution:</b>
+        <p id="logicText">Steps will appear here...</p>
+      </div>
+      <div id="summaryPanel" class="panel" style="display: none">
+        <b>Summary:</b>
+        <ul id="summaryList"></ul>
+      </div>
+    </div>
+
+    <script>
+      function sleep(ms) {
+        return new Promise((resolve) => setTimeout(resolve, ms));
+      }
+
+      async function startBinarySearch() {
+        const input = document.getElementById("userInput").value.trim();
+        const target = parseInt(
+          document.getElementById("targetInput").value,
+          10
+        );
+        let arr = input
+          .split(",")
+          .map((num) => parseInt(num, 10))
+          .sort((a, b) => a - b);
+
+        let container = document.getElementById("visualization");
+        let logicPanel = document.getElementById("logicText");
+        let speed = parseInt(document.getElementById("speedSlider").value);
+        let summaryPanel = document.getElementById("summaryPanel");
+        let summaryList = document.getElementById("summaryList");
+
+        // Reset
+        container.innerHTML = "";
+        logicPanel.innerText = "Steps will appear here...";
+        summaryPanel.style.display = "none";
+        summaryList.innerHTML = "";
+
+        // Create boxes
+        arr.forEach((value) => {
+          let box = document.createElement("div");
+          box.classList.add("box");
+          box.innerText = value;
+          container.appendChild(box);
+        });
+
+        let boxes = container.childNodes;
+        let steps = [];
+
+        let low = 0,
+          high = arr.length - 1;
+        let found = false;
+
+        while (low <= high) {
+          let mid = Math.floor((low + high) / 2);
+
+          // Reset highlights
+          for (let k = 0; k < arr.length; k++) {
+            boxes[k].className = "box";
+          }
+
+          // Mark pointers
+          boxes[low]?.classList.add("low");
+          boxes[mid]?.classList.add("mid");
+          boxes[high]?.classList.add("high");
+
+          logicPanel.innerText = `Checking mid index ${mid}: ${arr[mid]}`;
+          steps.push(`Checked ${arr[mid]} at index ${mid}`);
+          await sleep(speed);
+
+          if (arr[mid] === target) {
+            logicPanel.innerText = `✅ Found ${target} at index ${mid}`;
+            boxes[mid].className = "box found";
+            steps.push(`Found ${target} at index ${mid}`);
+            found = true;
+            break;
+          } else if (arr[mid] < target) {
+            logicPanel.innerText = `${arr[mid]} < ${target}, searching right half`;
+            steps.push(`${arr[mid]} < ${target}, move right`);
+            low = mid + 1;
+          } else {
+            logicPanel.innerText = `${arr[mid]} > ${target}, searching left half`;
+            steps.push(`${arr[mid]} > ${target}, move left`);
+            high = mid - 1;
+          }
+
+          await sleep(speed);
+        }
+
+        if (!found) {
+          logicPanel.innerText = `❌ ${target} not found in array`;
+          steps.push(`${target} not found in array`);
+        }
+
+        // Show summary
+        summaryPanel.style.display = "block";
+        steps.forEach((s) => {
+          let li = document.createElement("li");
+          li.innerText = s;
+          summaryList.appendChild(li);
+        });
+      }
+
+      function resetVisualizer() {
+        document.getElementById("visualization").innerHTML = "";
+        document.getElementById("logicText").innerText =
+          "Steps will appear here...";
+        document.getElementById("summaryPanel").style.display = "none";
+        document.getElementById("summaryList").innerHTML = "";
+      }
+    </script>
+  </body>
+</html>
