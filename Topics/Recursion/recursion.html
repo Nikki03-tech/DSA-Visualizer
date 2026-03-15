@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DSA Visualizer Architecture Diagram</title>
+  <!-- Classic Mermaid (v9) works without modules -->
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@9/dist/mermaid.min.js"></script>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: "forest"
+    });
+  </script>
+</head>
+<body>
+  <h2 style="text-align:center;">DSA Visualizer Architecture Diagram</h2>
+  <div class="mermaid">
+    flowchart TD
+      A[🏠 Home Page]
+      B[Sorting Algorithms]
+      B1[Bubble Sort]
+      B2[Insertion Sort]
+      B3[Selection Sort]
+      C[Searching Algorithms]
+      C1[Linear Search]
+      C2[Binary Search]
+      D[Recursion Algorithms]
+      D1[Factorial]
+      D2[Fibonacci]
+      D3[Tower of Hanoi]
+      E[Trees (Future)]
+      F[Graphs (Future)]
+      G[Dynamic Programming (Future)]
+
+      A --> B
+      A --> C
+      A --> D
+      A --> E
+      A --> F
+      A --> G
+      B --> B1
+      B --> B2
+      B --> B3
+      C --> C1
+      C --> C2
+      D --> D1
+      D --> D2
+      D --> D3
+  </div>
+</body>
+</html>
