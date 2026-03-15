@@ -31,6 +31,9 @@ DSA-Visualizer
 ├── style → CSS styling
 └── index.html → Main webpage
 
+## Project Preview
+
+![DSA Visualizer](Images/home.png)
 
 ## Live Demo
 You can view the project here:
