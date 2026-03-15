@@ -48,4 +48,4 @@ The goal of this project is to make algorithm learning more engaging by providin
 
 ## Author
 Nikitha Singh Rajpurohit  
-B.Tech Student | Aspiring Software Developer
+B.Tech Student | Aspiring AI Engineering and Software Developer
