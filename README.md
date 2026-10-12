@@ -1,54 +1,57 @@
 # DSA Visualizer
 
-## Overview
-DSA Visualizer is an interactive web application designed to help students understand how different Data Structures and Algorithms work through visual representation. It allows users to observe step-by-step execution of sorting algorithms, making complex concepts easier to grasp.
+An interactive educational website for exploring data structures and algorithms through visual demonstrations. The project is designed to make algorithm concepts easier to follow by pairing explanations with browser-based visualisations.
 
-This project was built as a learning tool for beginners who want to improve their understanding of algorithm behavior and efficiency.
+## Explore
 
-## Features
-- Visual representation of sorting algorithms
-- Step-by-step animation of algorithm execution
-- Interactive user interface
-- Adjustable speed for better learning
-- Beginner-friendly design
+- **Sorting algorithms**
+- **Searching algorithms**
+- **Recursion**
 
-## Algorithms Implemented
-- Bubble Sort
-- Selection Sort
-- Insertion Sort
+The available topic pages are linked from the home page. The repository currently includes separate topic folders for sorting, searching, and recursion.
 
 ## Tech Stack
-- HTML
-- CSS
-- JavaScript
+
+- HTML5
+- CSS3
+- Vanilla JavaScript
+
+No framework or package installation is required for the static site.
+
+## Live Demo
+
+[Open DSA Visualizer](https://nikki03-tech.github.io/DSA-Visualizer/)
+
+## Run Locally
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/Nikki03-tech/DSA-Visualizer.git
+   cd DSA-Visualizer
+   ```
+2. Open `index.html` in a modern browser, or serve the folder with VS Code Live Server.
 
 ## Project Structure
 
-DSA-Visualizer
-│
-├── Images → Screenshots of the project
-├── Topics → Algorithm files
-├── style → CSS styling
-└── index.html → Main webpage
+- `index.html` — topic landing page
+- `Topics/` — sorting, searching, and recursion pages
+- `style/` — stylesheet files
+- `Images/` — visual assets used by the site
 
-## Project Preview
+## Learning Goals
 
-![DSA Visualizer](Images/home.png)
+This project explores how algorithms can be communicated visually, how separate pages can be organised by topic, and how HTML, CSS, and JavaScript work together in a small interactive learning tool.
 
-## Live Demo
-You can view the project here:
+## Potential Next Steps
 
-https://nikki03-tech.github.io/DSA-Visualizer/
-
-## Learning Objective
-The goal of this project is to make algorithm learning more engaging by providing visual demonstrations instead of only theoretical explanations.
-
-## Future Improvements
-- Add more algorithms (Merge Sort, Quick Sort)
-- Add searching algorithms
-- Add time complexity display
-- Improve UI animations
+- Add complexity explanations for each algorithm
+- Add more algorithm examples and controls
+- Improve keyboard and mobile accessibility
+- Add short explanations alongside each visualisation
 
 ## Author
-Nikitha Singh Rajpurohit  
-B.Tech Student | Aspiring AI Engineering and Software Developer
+
+**Nikitha Singh Raj Purohit** · B.Tech CSE & IT, Class of 2027
+
+- [GitHub](https://github.com/Nikki03-tech)
+- [LinkedIn](https://www.linkedin.com/in/nikitha-singh-raj-purohit-862317301/)
