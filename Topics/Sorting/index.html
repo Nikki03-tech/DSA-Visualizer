@@ -1,68 +1,75 @@
+
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="sorting.css" />
-    <title>Sorting Algorithms</title>
-  </head>
-  <body>
-    <header>
-      <div class="header-flex">
-        <div class="header-text">
-          <h1>Sorting Algorithms</h1>
-          <p><em>Explore various sorting techniques interactively.</em></p>
-        </div>
-      </div>
-    </header>
-
-    <div class="headings">
-      <div class="sidebar">
-        <a class="sort" href="../../index.html">🏠 Home</a>
-        <a class="sort" href="algorithms/bubblesort.html">Bubble Sort</a>
-        <a class="sort" href="algorithms/selection.html">Selection Sort</a>
-        <a class="sort" href="algorithms/insertion.html">Insertion Sort</a>
-        <!-- <a class="sort" href="algorithms/merge.html">Merge Sort</a>
-        <a class="sort" href="algorithms/quick.html">Quick Sort</a> -->
-      </div>
-
-      <!-- Content loads here -->
-      <div id="content" style="padding: 20px; flex: 1">
-        <h2>🔎 What is Sorting?</h2>
-        <p>Sorting is the process of arranging data in a specific order, usually
-          <b>ascending</b> (smallest to largest) or <b>descending</b> (largest to smallest).
-          It makes data easier to search, analyze, and visualize.
-        </p>
-
-        <h2>✨ Why is Sorting Important?</h2>
-        <ul>
-          <li>Helps in <b>faster searching</b> (example: Binary Search requires sorted data).</li>
-          <li>Makes <b>data organization</b> simple and clear.</li>
-          <li>Improves <b>efficiency of other algorithms</b> like searching, graph, and database operations.</li>
-          <li>Used in <b>real-time systems</b> like airline ticketing, e-commerce, and banking.</li>
-        </ul>
-
-        <h2>📂 Types of Sorting Techniques</h2>
-        <ul>
-          <li><b>Bubble Sort</b> – Simple method, repeatedly swaps adjacent elements if they are in wrong order.</li>
-          <li><b>Selection Sort</b> – Finds the minimum element and places it at the beginning.</li>
-          <li><b>Insertion Sort</b> – Builds the final sorted array one item at a time.</li>
-          <!-- <li><b>Merge Sort</b> – Divide and Conquer method, divides array into halves and merges them back.</li>
-          <li><b>Quick Sort</b> – Divide and Conquer method, uses a pivot and partitions array around it.</li> -->
-        </ul>
-
-        <h2>🌍 Real-Life Applications of Sorting</h2>
-        <ul>
-          <li><b>E-commerce:</b> Sorting products by price, popularity, or rating.</li>
-          <li><b>Search Engines:</b> Ranking search results based on relevance.</li>
-          <li><b>Banking:</b> Sorting customer records or transactions by date or amount.</li>
-          <li><b>Airline/Train Systems:</b> Arranging passenger lists or schedules.</li>
-          <li><b>Data Science:</b> Preprocessing datasets before analysis and visualization.</li>
-        </ul>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sorting Algorithms</title>
+  <link rel="stylesheet" href="sorting.css">
+</head>
+<body>
+  <header>
+    <div class="header-flex">
+      <div class="header-text">
+        <h1>Sorting Algorithms</h1>
+        <p><em>Explore sorting techniques interactively.</em></p>
       </div>
     </div>
-  </div>
+  </header>
+
+  <main class="headings">
+    <nav class="sidebar">
+      <a class="sort" href="../../index.html">🏠 Home</a>
+      <a class="sort" href="algorithms/bubblesort.html">Bubble Sort</a>
+      <a class="sort" href="algorithms/selection.html">Selection Sort</a>
+      <a class="sort" href="algorithms/insertion.html">Insertion Sort</a>
+    </nav>
+
+    <section id="content" style="padding: 20px; flex: 1">
+      <h2>🔎 What is Sorting?</h2>
+      <p>Sorting arranges data in ascending or descending order.</p>
+
+      <h2>✨ Try Bubble Sort</h2>
+      <p>Enter comma-separated numbers, prepare the array, and watch Bubble Sort work.</p>
+
+      <label for="userArray">Enter numbers:</label>
+      <input id="userArray" type="text" value="64, 25, 12, 22, 11"
+             placeholder="Example: 64, 25, 12, 22, 11">
+
+      <button type="button" onclick="prepareBubbleSort()">Prepare Array</button>
+
+      <div style="margin-top: 16px">
+        <label for="speedControl">Visualization speed:</label>
+        <input id="speedControl" type="range" min="100" max="1000"
+               step="100" value="300">
+        <span id="speedLabel">300 ms</span>
+      </div>
+
+      <div style="margin-top: 16px">
+        <button type="button" onclick="startBubbleSort()">
+          ▶ Start Visualization
+        </button>
+      </div>
+
+      <div id="visualization"
+           style="display:flex; align-items:flex-end; flex-wrap:wrap;
+                  gap:4px; min-height:220px; padding:20px 0">
+      </div>
+
+      <h3>Algorithm Status</h3>
+      <p id="logicPanel" aria-live="polite">
+        Enter numbers and click Prepare Array.
+      </p>
+
+      <h2>📚 Why is Sorting Important?</h2>
+      <ul>
+        <li>Organizes data for easier analysis.</li>
+        <li>Helps search and database operations.</li>
+        <li>Is used in e-commerce, banking, and data science.</li>
+      </ul>
+    </section>
+  </main>
+
+  <script src="sorting.js"></script>
 </body>
 </html>
-<!-- Load shared logic first -->
-<script src="sorting.js"></script>
