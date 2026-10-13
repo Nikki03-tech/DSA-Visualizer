@@ -227,3 +227,73 @@ input:focus-visible {
     margin: 8px 0;
   }
 }
+
+/* Educational information and visualizer cards */
+#content {
+  flex: 1;
+  min-width: 0;
+  padding: 28px !important;
+}
+
+.info-card {
+  background: #ffffff;
+  padding: 24px;
+  margin: 0 0 24px;
+  border-radius: 12px;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+}
+
+.info-card h2 {
+  margin-top: 0;
+  color: #27345a;
+  font-size: 22px;
+}
+
+.info-card h2:not(:first-child) {
+  margin-top: 24px;
+}
+
+.info-card li {
+  margin-bottom: 8px;
+}
+
+.visualizer-card {
+  margin-top: 24px;
+}
+
+.control-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 16px 0;
+}
+
+#visualization {
+  display: flex;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 8px;
+  min-height: 260px;
+  padding: 20px;
+  margin-top: 18px;
+  background: #f8faff;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  overflow-x: auto;
+}
+
+@media (max-width: 700px) {
+  #content {
+    padding: 16px !important;
+  }
+
+  .info-card {
+    padding: 18px;
+  }
+
+  .control-row {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}

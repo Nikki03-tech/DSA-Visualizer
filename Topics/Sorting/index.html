@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,16 +24,61 @@
       <a class="sort" href="algorithms/insertion.html">Insertion Sort</a>
     </nav>
 
-    <section id="content" style="padding: 20px; flex: 1">
-      <h2>🔎 What is Sorting?</h2>
-      <p>Sorting arranges data in ascending or descending order.</p>
+    <section id="content">
+      <div class="info-card">
+        <h2>🔎 What is Sorting?</h2>
+        <p>Sorting is the process of arranging data in a particular order, such as ascending or descending order. It is one of the fundamental operations in computer science.</p>
 
-      <h2>📚 Why is Sorting Important?</h2>
-      <ul>
-        <li>Organizes data for easier analysis.</li>
-        <li>Helps search and database operations.</li>
-        <li>Is used in e-commerce, banking, and data science.</li>
-      </ul>
+        <h2>✨ Why Sorting is Important?</h2>
+        <ul>
+          <li>Organizes data for easier analysis.</li>
+          <li>Helps improve searching and database operations.</li>
+          <li>Makes ranking, comparing, and finding information easier.</li>
+        </ul>
+
+        <h2>📚 Types of Sorting Techniques</h2>
+        <ul>
+          <li><strong>Bubble Sort:</strong> Compares adjacent elements and swaps them when they are in the wrong order.</li>
+          <li><strong>Selection Sort:</strong> Finds the smallest element in the unsorted portion and places it in the correct position.</li>
+          <li><strong>Insertion Sort:</strong> Inserts each element into its correct position in the already-sorted portion.</li>
+        </ul>
+
+        <h2>🌍 Real-Life Applications</h2>
+        <ul>
+          <li>Sorting products by price in online shopping.</li>
+          <li>Ranking students according to their marks.</li>
+          <li>Organizing names, records, and search results.</li>
+          <li>Arranging data for reporting and analysis.</li>
+        </ul>
+      </div>
+
+      <div class="info-card visualizer-card">
+        <h2>✨ Try Bubble Sort</h2>
+        <p>Enter comma-separated numbers, prepare the array, and watch Bubble Sort work step by step.</p>
+
+        <div class="control-row">
+          <label for="userArray">Enter numbers:</label>
+          <input id="userArray" type="text" value="64, 25, 12, 22, 11"
+                 placeholder="Example: 64, 25, 12, 22, 11">
+          <button type="button" onclick="prepareBubbleSort()">Prepare Array</button>
+        </div>
+
+        <div class="control-row speed-row">
+          <label for="speedControl">Visualization speed:</label>
+          <input id="speedControl" type="range" min="100" max="1000"
+                 step="100" value="300">
+          <span id="speedLabel">300 ms</span>
+        </div>
+
+        <button type="button" onclick="startBubbleSort()">▶ Start Visualization</button>
+
+        <div id="visualization" aria-label="Sorting visualization"></div>
+
+        <h3>Algorithm Status</h3>
+        <p id="logicPanel" aria-live="polite">
+          Enter numbers and click Prepare Array.
+        </p>
+      </div>
     </section>
   </main>
 
